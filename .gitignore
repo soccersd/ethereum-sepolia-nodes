@@ -1,0 +1,21 @@
+# Ignore data directories
+data/
+data-prysm/
+
+# Ignore JWT token
+jwt/jwt.hex
+
+# Ignore logs
+*.log
+
+# Ignore IDE files
+.vscode/
+.idea/
+
+# Ignore temp files
+*.tmp
+*.temp
+
+# Ignore OS specific files
+.DS_Store
+Thumbs.db 
