@@ -24,6 +24,8 @@ mkdir data jwt data-prysm
 openssl rand -hex 32 > jwt/jwt.hex
 ```
 
+**IMPORTANT**: Never commit your actual JWT secret to Git repositories. The file `jwt/jwt.hex` is in `.gitignore` to prevent accidental exposure. Use the provided `jwt.hex.example` as a template.
+
 ### 3. Configure Docker Compose Files
 
 Create two separate Docker Compose files:
@@ -131,6 +133,13 @@ Stop Prysm:
 ```bash
 docker-compose -f docker-compose-prysm.yml down
 ```
+
+## Security Notes
+
+1. The JWT secret file (`jwt.hex`) contains sensitive information and should never be committed to your git repository
+2. This repository includes a `.gitignore` file that prevents `jwt.hex` from being tracked
+3. Use secure passwords/keys for any production environments
+4. Consider implementing a firewall to restrict access to your nodes
 
 ## Important Notes
 
