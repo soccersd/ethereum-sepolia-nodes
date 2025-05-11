@@ -1,6 +1,8 @@
-# Ignore data directories
-data/
-data-prysm/
+# Ignore data directories content but keep the directories
+data/*
+!data/.gitkeep
+data-prysm/*
+!data-prysm/.gitkeep
 
 # Ignore JWT token
 jwt/jwt.hex
