@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  beacon:
+    image: gcr.io/prysmlabs/prysm-beacon:stable
+    command: >
+      --sepolia
+      --datadir=/data
+      --checkpoint-sync-url=https://sepolia.checkpoint-sync.ethdevops.io
+      --genesis-beacon-api-url=https://sepolia.checkpoint-sync.ethdevops.io
+      --accept-terms-of-use
+      --rpc-host=0.0.0.0
+      --rpc-port=4000
+      --grpc-gateway-host=0.0.0.0
+      --grpc-gateway-port=3500
+      --p2p-tcp-port=13000
+      --p2p-udp-port=12000
+      --monitoring-host=0.0.0.0
+      --monitoring-port=8080
+      --fallback-web3provider=https://sepolia.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161
+    volumes:
+      - ./data-prysm:/data
+    ports:
+      - "4000:4000"
+      - "3500:3500"
+      - "13000:13000"
+      - "12000:12000/udp"
+      - "8080:8080"
+    restart: unless-stopped
+    network_mode: "host" 

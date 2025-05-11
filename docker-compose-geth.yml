@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  geth:
+    image: ethereum/client-go:stable
+    command: >
+      --sepolia
+      --http
+      --http.addr 0.0.0.0
+      --http.port 8545
+      --http.api eth,net,web3,engine
+      --ws
+      --ws.addr 0.0.0.0
+      --ws.port 8546
+      --authrpc.vhosts=localhost
+      --authrpc.jwtsecret=/jwt/jwt.hex
+      --authrpc.addr 0.0.0.0
+      --authrpc.port 8551
+      --metrics
+      --metrics.addr 0.0.0.0
+      --metrics.port 6060
+      --datadir /data
+    volumes:
+      - ./data:/data
+      - ./jwt:/jwt
+    ports:
+      - "8545:8545"
+      - "8546:8546"
+      - "8551:8551"
+      - "30303:30303"
+      - "30303:30303/udp"
+      - "6060:6060"
+    restart: unless-stopped 
